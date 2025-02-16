@@ -2,6 +2,11 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
 import ttkbootstrap as tb  # Modern UI library
+import tkinter.font as tkfont
+
+# Set default font to Arial
+default_font = tkfont.nametofont("TkDefaultFont")
+default_font.configure(family="Arial", size=10)
 
 # Tooltip class for showing explanations
 class ToolTip:
@@ -94,7 +99,7 @@ class ScrcpyGUI:
 
             if isinstance(default, bool):
                 var = tk.BooleanVar(value=default)
-                # Use default style for checkbutton
+                # Use default style for checkbutton without custom bootstyle
                 widget = tb.Checkbutton(frame, variable=var)
             else:
                 var = tk.StringVar(value=default)
@@ -245,10 +250,6 @@ class ScrcpyGUI:
             messagebox.showerror("Error", f"Failed to start scrcpy: {e}")
 
 if __name__ == "__main__":
-    # Set default font to a common system font to avoid PIL font errors.
     root = tb.Window(themename="darkly")
-    import tkinter.font as tkfont
-    default_font = tkfont.nametofont("TkDefaultFont")
-    default_font.configure(family="Arial", size=10)
     app = ScrcpyGUI(root)
     root.mainloop()
