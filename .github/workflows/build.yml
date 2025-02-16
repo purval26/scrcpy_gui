@@ -25,6 +25,9 @@ jobs:
           # Uncomment the next line if you have a requirements.txt file:
           # pip install -r requirements.txt
 
+      - name: Install dependencies
+  run: pip install ttkbootstrap 
+
       - name: Build EXE with PyInstaller
         run: |
           pyinstaller --onefile --windowed scrcpy_gui.py
