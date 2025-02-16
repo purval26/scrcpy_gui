@@ -94,7 +94,7 @@ class ScrcpyGUI:
 
             if isinstance(default, bool):
                 var = tk.BooleanVar(value=default)
-                # Remove custom bootstyle for checkbutton to avoid error.
+                # Use default style for checkbutton
                 widget = tb.Checkbutton(frame, variable=var)
             else:
                 var = tk.StringVar(value=default)
@@ -245,6 +245,10 @@ class ScrcpyGUI:
             messagebox.showerror("Error", f"Failed to start scrcpy: {e}")
 
 if __name__ == "__main__":
+    # Set default font to a common system font to avoid PIL font errors.
     root = tb.Window(themename="darkly")
+    import tkinter.font as tkfont
+    default_font = tkfont.nametofont("TkDefaultFont")
+    default_font.configure(family="Arial", size=10)
     app = ScrcpyGUI(root)
     root.mainloop()
