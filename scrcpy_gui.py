@@ -52,7 +52,8 @@ class ScrcpyGUI:
 
             if isinstance(default, bool):
                 var = tk.BooleanVar(value=default)
-                widget = tb.Checkbutton(frame, variable=var, bootstyle="success-round-toolbutton")
+                # Changed bootstyle from "success-round-toolbutton" to "success-round"
+                widget = tb.Checkbutton(frame, variable=var, bootstyle="success-round")
             else:
                 var = tk.StringVar(value=default)
                 widget = tb.Entry(frame, textvariable=var, bootstyle="info")
@@ -153,7 +154,7 @@ class ScrcpyGUI:
         if self.bit_rate.get(): cmd.extend(['--bit-rate', f"{self.bit_rate.get()}M"])
         if self.max_size.get(): cmd.extend(['--max-size', self.max_size.get()])
         if self.crop.get(): cmd.extend(['--crop', self.crop.get()])
-        # (Additional video options like lock_video_orientation and encoder could be added similarly)
+        # (Additional video options like lock_video_orientation and encoder can be added similarly)
 
         # Audio options
         if self.no_audio.get(): cmd.append('--no-audio')
