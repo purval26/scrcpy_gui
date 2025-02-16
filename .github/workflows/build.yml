@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Python
@@ -19,14 +19,11 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
-          pip install pyinstaller
-          pip install ttkbootstrap 
-          # Uncomment the next line if you have a requirements.txt file:
-          # pip install -r requirements.txt
+          pip install pyinstaller ttkbootstrap
 
-      - name: Build EXE with PyInstaller
+      - name: Build executable with PyInstaller
         run: |
           pyinstaller --onefile --windowed scrcpy_gui.py
 
