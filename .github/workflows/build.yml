@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         run: |
           pip install pyinstaller
-          # If you have additional dependencies, uncomment the next line:
+          # Uncomment the next line if you have a requirements.txt file:
           # pip install -r requirements.txt
 
       - name: Build EXE with PyInstaller
@@ -30,7 +30,7 @@ jobs:
           pyinstaller --onefile --windowed scrcpy_gui.py
 
       - name: Upload Executable Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: scrcpy_gui_exe
           path: dist/scrcpy_gui.exe
